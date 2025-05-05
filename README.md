@@ -161,3 +161,8 @@ Here are some ways to enhance your testbench:
 
 ## 8. Conclusion
 Creating testbenches in Verilog is a fundamental step in digital hardware development. It ensures your designs are functionally correct before moving to synthesis and implementation. With the example above, you can build and simulate any Verilog module using a structured stimulus and monitoring approach.
+
+## 9. Technologies Used
+- HDL: Verilog
+
+- Development Tool: AMD Xilinx Vivado
