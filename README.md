@@ -1,76 +1,113 @@
-# Verilog_Testbench_Essentials
+# 🧪 Verilog Testbench Essentials
+### Creating and Simulating Testbenches in Verilog
+
+![Platform](https://img.shields.io/badge/Platform-Vivado-blue)
+![Language](https://img.shields.io/badge/Language-Verilog-orange)
+
+---
+
+## 📖 Overview
+
 Creating testbenches in Verilog is an essential practice to verify the functionality of your modules and ensure your design behaves as expected.
 
-## 1. Description
-A testbench is a special Verilog module that is not synthesized but used solely for simulation. It instantiates the Device Under Test (DUT) and provides inputs while observing the outputs to validate the design.
+A testbench is a special Verilog module used only for simulation. It instantiates the Device Under Test (DUT), applies input stimuli, and monitors the outputs to validate functionality.
 
-## 2. Repository Structure
+Learning Objectives:
 
-- assets/ - Images
+- Understand the structure of a Verilog testbench
+- Instantiate and connect a DUT
+- Generate input stimuli using timing control
+- Monitor outputs during simulation
+- Run simulations with tools like Vivado, ModelSim, Xcelium, or Icarus Verilog
 
-- src/ - Verilog source code
+---
 
-- tb/ - Testbench code
+## 📂 Repository Structure
 
-## 3. Basic Structure of a Testbench
-A typical Verilog testbench includes the following components:
+```text
+Verilog_Testbench_Essentials/
+│
+├── assets/
+│   ├── Simplified_Diagram.jpg
+│   └── Vivado_Simulation.jpg
+│
+├── src/
+│   └── full_adder.v
+│
+├── tb/
+│   └── tb_full_adder.v
+│
+├── License
+│
+└── README.md
+```
 
-- Test signal declaration: Signals used to connect the DUT to the testbench.
+---
 
-- DUT instantiation: The actual module being tested.
+## 🧠 What Is a Testbench?
 
-- Stimulus generation: Provides input signals to the DUT.
+A testbench is:
 
-- Output monitoring: Observes the behavior of the DUT’s outputs.
+- Not synthesized
+- Used only for simulation
+- Responsible for applying inputs
+- Responsible for observing outputs
 
-- Timing control: In Verilog, simulation uses timing commands such as `#delay`.
+It acts as a controlled environment where your design can be tested before hardware implementation.
 
-## 4. Simple Example: Full Adder Testbench
+---
 
-### Full Adder Module
-Available in the `src` directory.
+## 🔧 Basic Structure of a Verilog Testbench
 
-<pre>
-  module full_adder (
-    input A,        // Input bit A
-    input B,        // Input bit B
-    input Cin,      // Carry-in input
-    output Sum,     // Sum output
-    output Cout     // Carry-out output
+A typical testbench includes:
+
+- Signal declaration (reg and wire)
+- DUT instantiation
+- Stimulus generation
+- Output monitoring
+- Timing control using ```#delay```
+
+---
+
+## 🧮 Example: Full Adder Testbench
+
+**Full Adder Module** (```src/full_adder.v```)
+
+```verilog
+module full_adder (
+    input A,
+    input B,
+    input Cin,
+    output Sum,
+    output Cout
 );
-    // Assign the sum and carry-out using binary addition
+
     assign {Cout, Sum} = A + B + Cin;
+
 endmodule
-</pre>
+```
 
-### Full Adder Testbench
-Available in the `tb` directory.
+**Full Adder Testbench** (```tb/tb_full_adder.v```)
 
-<pre>
-  module tb_full_adder;  // Testbench for the full_adder module
+```verilog
+module tb_full_adder;
 
-    // Declare inputs as registers (reg) and outputs as wires (wire)
-    reg A, B, Cin;       // Inputs to the full adder: A, B, and Carry-in (Cin)
-    wire Sum, Cout;      // Outputs from the full adder: Sum and Carry-out (Cout)
+    reg A, B, Cin;
+    wire Sum, Cout;
 
-    // Instantiate the Device Under Test (DUT)
-    // 'uut' stands for "Unit Under Test"
-    // This connects the testbench signals (A, B, Cin) to the full_adder inputs,
-    // and connects the outputs (Sum, Cout) to wires declared above.
+    // DUT Instantiation
     full_adder uut (
-        .A(A),       // Connect testbench A to full_adder input A
-        .B(B),       // Connect testbench B to full_adder input B
-        .Cin(Cin),   // Connect testbench Cin to full_adder input Cin
-        .Sum(Sum),   // Connect full_adder output Sum to testbench wire Sum
-        .Cout(Cout)  // Connect full_adder output Cout to testbench wire Cout
+        .A(A),
+        .B(B),
+        .Cin(Cin),
+        .Sum(Sum),
+        .Cout(Cout)
     );
 
-    // Initial block to generate input stimuli
+    // Stimulus block
     initial begin
-        // Initialize all inputs to zero
         A = 0; B = 0; Cin = 0;
 
-        // Apply various combinations of A, B, and Cin
         #10 A = 0; B = 0; Cin = 1;
         #10 A = 0; B = 1; Cin = 0;
         #10 A = 0; B = 1; Cin = 1;
@@ -78,91 +115,136 @@ Available in the `tb` directory.
         #10 A = 1; B = 0; Cin = 1;
         #10 A = 1; B = 1; Cin = 0;
         #10 A = 1; B = 1; Cin = 1;
-        #10;  // Wait a little before ending the simulation
+        #10;
 
-        $finish;  // End the simulation
+        $finish;
     end
 
-    // Initial block to monitor the simulation results
+    // Monitor block
     initial begin
-        // This prints input and output values to the console whenever they change
-        $monitor("A=%b, B=%b, Cin=%b -> Sum=%b, Cout=%b", A, B, Cin, Sum, Cout);
+        $monitor("A=%b, B=%b, Cin=%b -> Sum=%b, Cout=%b",
+                  A, B, Cin, Sum, Cout);
     end
 
 endmodule
-</pre>
+```
 
-## 5. Testbench Explanation
-Figure 1 shows a simplified diagram.
+---
 
-![Simplified Diagram](https://github.com/mcleber/Verilog_Testbench_Essentials/blob/main/assets/Simplified_Diagram.jpg)
+## 🖼️ Simplified Testbench Diagram
+
+<p align="center">
+  <img src="assets/Simplified_Diagram.jpg" width="400" alt="Simplified Testbench Diagram">
+</p>
+
+Figure 1: Testbench structure showing stimulus → DUT → monitored outputs.
+
+---
+
+## 🔍 Testbench Components Explained
 
 ### Signal Declaration
-In a testbench, inputs to the DUT are declared as `reg` because they are driven by procedural blocks, while outputs are declared as `wire`.
 
-<pre>
-  reg A, B, Cin;
-  wire Sum, Cout;
-</pre>
+Inputs of the DUT are declared as ```reg``` (driven procedurally).
+
+Outputs are declared as ```wire```.
+
+```verilog
+reg A, B, Cin;
+wire Sum, Cout;
+```
 
 ### DUT Instantiation
-The DUT is instantiated and connected to the declared signals. The instance name is typically `uut` (Unit Under Test).
 
-<pre>
-  full_adder uut (
+The DUT (Device Under Test) is instantiated and connected to the testbench signals. The instance is named ```uut``` (Unit Under Test), which is a common naming convention also adopted by tools such as Vivado.
+
+```verilog
+full_adder uut (
     .A(A),
     .B(B),
     .Cin(Cin),
     .Sum(Sum),
     .Cout(Cout)
 );
-</pre>
+```
 
 ### Stimulus Generator
-This block drives the input values over simulation time using `#delay` for timing control.
 
-<pre>
-  initial begin
-    A = 0; B = 0; Cin = 0;
-    #10 A = 0; B = 0; Cin = 1;
-    #10 A = 0; B = 1; Cin = 0;
-    #10 A = 0; B = 1; Cin = 1;
-    #10 A = 1; B = 0; Cin = 0;
-    #10 A = 1; B = 0; Cin = 1;
-    #10 A = 1; B = 1; Cin = 0;
-    #10 A = 1; B = 1; Cin = 1;
-    #10;
-    $finish;
-end
-</pre>
+The ```initial``` block applies different input combinations using ```#delay``` for timing control.
+
+```verilog
+#10 A = 1; B = 1; Cin = 0;
+```
+
+Each ```#10``` represents a 10-time-unit simulation delay.
 
 ### Output Monitoring
-The `$monitor` command logs all input and output changes during simulation, providing a detailed trace.
 
-<pre>
-  initial begin
-    $monitor("A=%b, B=%b, Cin=%b -> Sum=%b, Cout=%b", A, B, Cin, Sum, Cout);
-end
-</pre>
+The ```$monitor``` system task prints values whenever they change.
 
-## 6. Running the Simulation
-With the testbench ready, use simulation tools such as ModelSim, XCELIUM, or Vivado Simulator. Compile and run the simulation to observe the outputs. The results should match the expected truth table of a full adder. Figure 2 shows the simulation waveform from Vivado.
+```verilog
+$monitor("A=%b, B=%b, Cin=%b -> Sum=%b, Cout=%b",
+          A, B, Cin, Sum, Cout);
+```
 
-![Vivado Simulation](https://github.com/mcleber/Verilog_Testbench_Essentials/blob/main/assets/Vivado_Simulation.jpg)
+This creates a live log of simulation behavior.
 
-## 7. Improving the Testbench
+---
+
+## ▶️ Running the Simulation
+
+With the testbench ready, you can use simulation tools such as **ModelSim**, **Xcelium**, **Vivado Simulator**, or **Icarus Verilog** (for example, using it together with VS Code).
+
+Compile and run the simulation to observe the outputs. The results should match the expected truth table of a full adder. Figure 2 shows the simulation waveform generated using Vivado.
+
+<p align="center"> 
+  <img src="assets/Vivado_Simulation.jpg" width="700" alt="Vivado Simulation Waveform"> 
+</p>
+
+The waveform must match the truth table of a full adder.
+
+**Full Adder Truth Table**
+
+| A | B | Cin | Sum | Cout |
+|---|---|-----|-----|------|
+| 0 | 0 |  0  |  0  |  0   |
+| 0 | 0 |  1  |  1  |  0   |
+| 0 | 1 |  0  |  1  |  0   |
+| 0 | 1 |  1  |  0  |  1   |
+| 1 | 0 |  0  |  1  |  0   |
+| 1 | 0 |  1  |  0  |  1   |
+| 1 | 1 |  0  |  0  |  1   |
+| 1 | 1 |  1  |  1  |  1   |
+
+---
+
+## 🚀 Improving the Testbench
+
 Here are some ways to enhance your testbench:
 
-- Automatic verification: Use assertions to compare DUT outputs with expected values.
+- **Automatic verification:** Use assertions to compare DUT outputs with expected values.
+- **Randomized testing:** Apply ```$random``` stimuli using $random to check for unexpected behavior.
+- **Edge case testing:** Specifically test boundary values and transitions for robustness.
 
-- Randomized testing: Apply random stimuli using $random to check for unexpected behavior.
+---
 
-- Edge case testing: Specifically test boundary values and transitions for robustness.
+## 🎯 Why Testbenches Matter
 
-## 8. Conclusion
-Creating testbenches in Verilog is a fundamental step in digital hardware development. It ensures your designs are functionally correct before moving to synthesis and implementation. With the example above, you can build and simulate any Verilog module using a structured stimulus and monitoring approach.
+- Prevent hardware debugging headaches
+- Validate logic before synthesis
+- Reduce FPGA iteration time
+- Improve design reliability
 
-## 9. Technologies Used
-- HDL: Verilog
+Simulation-first design is a professional industry practice.
 
-- Development Tool: AMD Xilinx Vivado
+---
+
+## 📜 License
+
+This project is open-source and available under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+Developed as a learning-focused digital design project to demonstrate structured testbench development in Verilog.
