@@ -223,7 +223,7 @@ The waveform must match the truth table of a full adder.
 Here are some ways to enhance your testbench:
 
 - **Automatic verification:** Use assertions to compare DUT outputs with expected values.
-- **Randomized testing:** Apply ```$random``` stimuli using $random to check for unexpected behavior.
+- **Randomized testing:** Apply random stimuli using $random to check for unexpected behavior.
 - **Edge case testing:** Specifically test boundary values and transitions for robustness.
 
 ---
