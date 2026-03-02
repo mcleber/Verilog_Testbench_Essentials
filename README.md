@@ -198,7 +198,7 @@ With the testbench ready, you can use simulation tools such as **ModelSim**, **X
 Compile and run the simulation to observe the outputs. The results should match the expected truth table of a full adder. Figure 2 shows the simulation waveform generated using Vivado.
 
 <p align="center"> 
-  <img src="assets/Vivado_Simulation.jpg" width="700" alt="Vivado Simulation Waveform"> 
+  <img src="assets/Vivado_Simulation.jpg" width="850" alt="Vivado Simulation Waveform"> 
 </p>
 
 The waveform must match the truth table of a full adder.
