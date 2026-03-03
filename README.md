@@ -1,4 +1,4 @@
-# 🧪 Verilog Testbench Essentials
+# Verilog Testbench Essentials
 ### Creating and Simulating Testbenches in Verilog
 
 ![Platform](https://img.shields.io/badge/Platform-Vivado-blue)
@@ -6,7 +6,7 @@
 
 ---
 
-## 📖 Overview
+## Overview
 
 Creating testbenches in Verilog is an essential practice to verify the functionality of your modules and ensure your design behaves as expected.
 
@@ -22,7 +22,7 @@ Learning Objectives:
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 Verilog_Testbench_Essentials/
@@ -44,7 +44,7 @@ Verilog_Testbench_Essentials/
 
 ---
 
-## 🧠 What Is a Testbench?
+## What Is a Testbench?
 
 A testbench is:
 
@@ -57,7 +57,7 @@ It acts as a controlled environment where your design can be tested before hardw
 
 ---
 
-## 🔧 Basic Structure of a Verilog Testbench
+## Basic Structure of a Verilog Testbench
 
 A typical testbench includes:
 
@@ -69,7 +69,7 @@ A typical testbench includes:
 
 ---
 
-## 🧮 Example: Full Adder Testbench
+## Example: Full Adder Testbench
 
 **Full Adder Module** (```src/full_adder.v```)
 
@@ -131,7 +131,7 @@ endmodule
 
 ---
 
-## 🖼️ Simplified Testbench Diagram
+## Simplified Testbench Diagram
 
 <p align="center">
   <img src="assets/Simplified_Diagram.jpg" width="400" alt="Simplified Testbench Diagram">
@@ -141,7 +141,7 @@ Figure 1: Testbench structure showing stimulus → DUT → monitored outputs.
 
 ---
 
-## 🔍 Testbench Components Explained
+## Testbench Components Explained
 
 ### Signal Declaration
 
@@ -191,7 +191,7 @@ This creates a live log of simulation behavior.
 
 ---
 
-## ▶️ Running the Simulation
+## Running the Simulation
 
 With the testbench ready, you can use simulation tools such as **ModelSim**, **Xcelium**, **Vivado Simulator**, or **Icarus Verilog** (for example, using it together with VS Code).
 
@@ -218,7 +218,7 @@ The waveform must match the truth table of a full adder.
 
 ---
 
-## 🚀 Improving the Testbench
+## Improving the Testbench
 
 Here are some ways to enhance your testbench:
 
@@ -228,7 +228,7 @@ Here are some ways to enhance your testbench:
 
 ---
 
-## 🎯 Why Testbenches Matter
+## Why Testbenches Matter
 
 - Prevent hardware debugging headaches
 - Validate logic before synthesis
@@ -239,12 +239,12 @@ Simulation-first design is a professional industry practice.
 
 ---
 
-## 📜 License
+## License
 
 This project is open-source and available under the MIT License.
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 Developed as a learning-focused digital design project to demonstrate structured testbench development in Verilog.
