@@ -245,6 +245,6 @@ This project is open-source and available under the MIT License.
 
 ---
 
-## Author
+## Additional Notes
 
 Developed as a learning-focused digital design project to demonstrate structured testbench development in Verilog.
