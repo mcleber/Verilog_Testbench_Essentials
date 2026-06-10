@@ -3,6 +3,7 @@
 
 ![Platform](https://img.shields.io/badge/Platform-Vivado-blue)
 ![Language](https://img.shields.io/badge/Language-Verilog-orange)
+![License](https://img.shields.io/badge/License-MIT-blue)
 
 ---
 
