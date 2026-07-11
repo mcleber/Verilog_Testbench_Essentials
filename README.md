@@ -1,7 +1,7 @@
 # Verilog Testbench Essentials
 ### Creating and Simulating Testbenches in Verilog
 
-![Platform](https://img.shields.io/badge/Platform-Vivado-blue)
+![EDA](https://img.shields.io/badge/EDA-Vivado-blue)
 ![Language](https://img.shields.io/badge/Language-Verilog-orange)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
