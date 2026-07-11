@@ -2,7 +2,7 @@
 ### Creating and Simulating Testbenches in Verilog
 
 ![EDA](https://img.shields.io/badge/EDA-Vivado-blue)
-![Language](https://img.shields.io/badge/Language-Verilog-orange)
+![HDL](https://img.shields.io/badge/HDL-Verilog-orange)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 ---
