@@ -3,7 +3,7 @@
 
 ![EDA](https://img.shields.io/badge/EDA-Vivado-blue)
 ![HDL](https://img.shields.io/badge/HDL-Verilog-orange)
-![License](https://img.shields.io/badge/License-MIT-blue)
+![License](https://img.shields.io/badge/License-MIT-darkgray)
 
 ---
 
